@@ -59,4 +59,7 @@ manifest.mf
 /purpur-api/build.gradle.kts
 /paper-api
 *.jar
+!/plugins/
+/plugins/*
+!/plugins/*.jar
 test-plugin.settings.gradle.kts
