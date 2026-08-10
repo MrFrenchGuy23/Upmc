@@ -7,7 +7,7 @@
     "exported_at": "2026-08-10T00:00:00+00:00",
     "name": "Upmc",
     "author": "MrFrenchGuy23",
-    "description": "Upmc a fork for Minecraft 26.2 focused on high performance for low budget servers. needs Java 25 (ghcr.io/pterodactyl/yolks:java_25).",
+    "description": "Upmc - a high-performance Purpur/Paper fork for Minecraft 26.2, optimized for low-budget servers. Requires Java 25 (ghcr.io/pterodactyl/yolks:java_25). Bundles ViaVersion/ViaBackwards/ViaRewind, LuckPerms, Vault, WorldGuard + WorldEdit, Chunky and TAB.",
     "features": [
         "eula",
         "java_version",
