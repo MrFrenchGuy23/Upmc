@@ -1,0 +1,35 @@
+# Upmc - performance-tuned reference config
+# Copy this file into your server's config/ folder (merge with any existing paper-global.yml).
+# Every key below was validated against this fork's GlobalConfiguration defaults.
+
+verbose: false
+
+chunk-loading:
+  basic:
+    # Raise if you see "Can't keep up" after join; lower if you get chunk lag spikes.
+    player-max-chunk-send-rate: 75.0
+    player-max-chunk-load-rate: 100.0
+  advanced:
+    # Moonrise: auto-tune send distance to hit the target rate below. Keep on.
+    auto-config-send-distance: true
+    # 0 = auto. Cap concurrent load/generate work per player to smooth out lag spikes.
+    player-max-concurrent-chunk-loads: 0
+    player-max-concurrent-chunk-generates: 0
+
+chunk-system:
+  # -1 = auto-detect. On beefy machines, give the chunk system more threads.
+  io-threads: -1
+  worker-threads: -1
+
+player-auto-save:
+  # -1 = use vanilla. Higher spreads autosave, smoothing out periodic lag spikes.
+  rate: 300
+
+misc:
+  # Soft cap on joins per tick to avoid login lag bursts.
+  max-joins-per-tick: 5
+
+collisions:
+  # Disabling player collision gives a notable TPS win on crowded servers
+  # at the cost of players passing through each other.
+  enable-player-collisions: true

@@ -1,0 +1,32 @@
+# Upmc - performance-tuned reference config (world defaults)
+# Copy this file into your server's config/ folder (merge with any existing paper-world-defaults.yml).
+# Every key below was validated against this fork's WorldConfiguration defaults.
+
+anticheat:
+  anti-xray:
+    # Turn on only if you run a server where players abuse X-ray. Costs a little TPS.
+    enabled: false
+
+entities:
+  spawning:
+    # Purpur/Paper already default this to true - keep it for smoother mob spawn distribution.
+    per-player-mob-spawns: true
+  behavior:
+    # -1 = vanilla. A positive value makes xp orbs merge aggressively (great on farms).
+    experience-merge-max-value: -1
+
+environment:
+  # Paper's explosion optimization: cache block-damage calcs instead of recomputing.
+  # Safe, high-impact on TNT/raid heavy servers.
+  optimize-explosions: true
+  # Cap scheduled block/fluid ticks per tick to avoid tick-spike snowballs.
+  max-block-ticks: 65536
+  max-fluid-ticks: 65536
+
+hopper:
+  # Don't waste a transfer attempt when the hopper is already full.
+  cooldown-when-full: true
+  # Skip container lookups for hoppers that are fully occluded by blocks. Pure win.
+  ignore-occluding-blocks: true
+  # Only disable if no plugin listens to InventoryMoveItemEvent - avoids firing it.
+  disable-move-event: false

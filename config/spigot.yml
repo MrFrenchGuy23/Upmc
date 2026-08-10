@@ -1,0 +1,47 @@
+# Upmc - performance-tuned reference config (Spigot world defaults)
+# Copy this file into your server's world folder as spigot.yml (merge with any existing file).
+# Every key below was validated against this fork's SpigotWorldConfig.
+
+ticks-per:
+  # HOPPERS - the single biggest survival-server perf lever.
+  # The fork default is now 8 (optimized); 1 = vanilla (every tick, most CPU).
+  # Lower only if hopper responsiveness matters more than TPS.
+  hopper-transfer: 8
+  hopper-check: 8
+
+hopper-amount: 1
+hopper-can-load-chunks: false
+
+merge-radius:
+  # Higher values reduce item/XP entity counts -> less entity ticking.
+  item: 4.0
+  exp: 3.0
+
+entity-activation-range:
+  # How far from players entities tick. Lower = less work, mobs "wake up" later.
+  animals: 32
+  monsters: 32
+  raiders: 48
+  misc: 16
+  water: 16
+  villagers: 32
+  flying-monsters: 48
+  wake-up-inactive:
+    animals-max-per-tick: 4
+    animals-every: 1200
+    animals-for: 100
+    monsters-max-per-tick: 8
+    monsters-every: 400
+    monsters-for: 100
+    villagers-max-per-tick: 4
+    villagers-every: 600
+    villagers-for: 100
+    flying-monsters-max-per-tick: 8
+    flying-monsters-every: 200
+    flying-monsters-for: 100
+  villagers-active-for-panic: true
+  tick-inactive-villagers: true
+  ignore-spectators: false
+
+max-tnt-per-tick: 100
+nerf-spawner-mobs: false

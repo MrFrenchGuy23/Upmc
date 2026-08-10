@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: MrFrenchGuy23 <mrfrenchguy23@users.noreply.github.com>
+Date: Mon, 10 Aug 2026 15:46:07 +0530
+Subject: [PATCH] Default ticks-per.hopper-check to 8 for performance
+
+
+diff --git a/src/main/java/org/spigotmc/SpigotWorldConfig.java b/src/main/java/org/spigotmc/SpigotWorldConfig.java
+index 339832e312578ee385bbf3c9d5c131435abe7d7a..9a7604b7d2c52aa77e428782484755c8df93e63c 100644
+--- a/src/main/java/org/spigotmc/SpigotWorldConfig.java
++++ b/src/main/java/org/spigotmc/SpigotWorldConfig.java
+@@ -280,9 +280,9 @@ public class SpigotWorldConfig {
+         // Set the tick delay between hopper item movements
+         this.hopperTransfer = this.getInt("ticks-per.hopper-transfer", 8);
+         if (SpigotConfig.version < 11) {
+-            this.set("ticks-per.hopper-check", 1);
++            this.set("ticks-per.hopper-check", 8);
+         }
+-        this.hopperCheck = this.getInt("ticks-per.hopper-check", 1);
++        this.hopperCheck = this.getInt("ticks-per.hopper-check", 8); // Upmc - default to Spigot's recommended optimized hopper check rate
+         this.hopperAmount = this.getInt("hopper-amount", 1);
+         this.hopperCanLoadChunks = this.getBoolean("hopper-can-load-chunks", false);
+         this.log("Hopper Transfer: " + this.hopperTransfer + " Hopper Check: " + this.hopperCheck + " Hopper Amount: " + this.hopperAmount + " Hopper Can Load Chunks: " + this.hopperCanLoadChunks);

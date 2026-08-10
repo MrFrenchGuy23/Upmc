@@ -1,0 +1,15 @@
+# Upmc - performance-tuned reference config (Purpur)
+# Copy this file into your server's root folder as purpur.yml (merge with any existing file).
+# Every key below was validated against this fork's PurpurConfig.
+
+verbose: false
+
+settings:
+  tps-catchup: true
+  lagging-threshold: 19.0
+  network:
+    upnp-port-forwarding: false
+    # Limit join bursts to reduce login lag spikes on busy servers.
+    max-joins-per-second: true
+    # Hide player IPs from the console login message.
+    log-ips: true
