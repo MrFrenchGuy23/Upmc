@@ -1,13 +1,13 @@
 {
-    "_comment": "Upmc - performance-focused Purpur/Paper fork egg. Requires Java 25. Import via Admin Panel > Nests > (select a nest) > Import Egg.",
+    "_comment": "Upmc - performance-focused purpur paper fork egg. Requires Java 25.",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
     "exported_at": "2026-08-10T00:00:00+00:00",
     "name": "Upmc",
-    "author": "MrFrenchGuy23",
-    "description": "Upmc is a high performance paper fork for Minecraft 26.2, optimized for low-budget servers. Requires Java 25 Bundles ViaVersion/ViaBackwards/ViaRewind, LuckPerms, Vault, WorldGuard + WorldEdit, Chunky and TAB.",
+    "author": "MrFrenchGuy23@users.noreply.github.com",
+    "description": "Upmc is a high performance Paper fork for Minecraft 26.2, optimized for low-budget servers. Requires Java 25. Bundles ViaVersion/ViaBackwards/ViaRewind, LuckPerms, Vault, WorldGuard + WorldEdit, Chunky and TAB.",
     "features": [
         "eula",
         "java_version",
@@ -19,21 +19,9 @@
     "file_denylist": [],
     "startup": "java -Xms{{SERVER_MEMORY}}M -Xmx{{SERVER_MEMORY}}M {{SERVER_JAVA_OPTS}} -jar {{SERVER_JAR}} nogui",
     "config": {
-        "files": {
-            "server.properties": {
-                "parser": "properties",
-                "find": {
-                    "server-port": "server.port",
-                    "server-ip": "server.ip",
-                    "max-players": "server.players",
-                    "online-mode": "server.online"
-                }
-            }
-        },
-        "startup": {
-            "done": "Done",
-            "userInteraction": []
-        },
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"server.port\",\r\n            \"server-ip\": \"server.ip\",\r\n            \"max-players\": \"server.players\",\r\n            \"online-mode\": \"server.online\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Done\"\r\n}",
+        "logs": "{}",
         "stop": "end"
     },
     "scripts": {
@@ -51,7 +39,8 @@
             "default_value": "upmc.jar",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:50"
+            "rules": "required|string|max:50",
+            "field_type": "text"
         },
         {
             "name": "Jar download URL",
@@ -60,7 +49,8 @@
             "default_value": "https://github.com/MrFrenchGuy23/Upmc/releases/download/V1/upmc.jar",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string|max:300"
+            "rules": "nullable|string|max:300",
+            "field_type": "text"
         },
         {
             "name": "Java opts",
@@ -69,7 +59,8 @@
             "default_value": "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string"
+            "rules": "nullable|string",
+            "field_type": "text"
         }
     ]
 }
