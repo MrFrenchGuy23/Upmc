@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: MrFrenchGuy23 <mrfrenchguy23@users.noreply.github.com>
+Date: Mon, 10 Aug 2026 12:12:42 +0530
+Subject: [PATCH] Hide player IPs in login log when
+ purpur.settings.network.log-ips is false
+
+
+diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
+index 331c7815552f2aa626eb5a1386d1769c4fad063f..7eb17f23404faca6e524c4bf3ab81d036e9a02f2 100644
+--- a/net/minecraft/server/players/PlayerList.java
++++ b/net/minecraft/server/players/PlayerList.java
+@@ -315,16 +315,30 @@ public abstract class PlayerList {
+         // Paper end - Configurable player collision
+         org.purpurmc.purpur.task.BossBarTask.addToAll(player); // Purpur - Implement TPSBar
+         // CraftBukkit start - moved down
+-        LOGGER.info(
+-            "{}[{}] logged in with entity id {} at ([{}]{}, {}, {})", // Paper - add world identifier
+-            player.getPlainTextName(),
+-            address,
+-            player.getId(),
+-            level.dimension().identifier(), // Paper - add world identifier
+-            player.getX(),
+-            player.getY(),
+-            player.getZ()
+-        );
++        // Purpur start - hide IP when configured
++        if (org.purpurmc.purpur.PurpurConfig.logIPs) {
++            LOGGER.info(
++                "{}[{}] logged in with entity id {} at ([{}]{}, {}, {})", // Paper - add world identifier
++                player.getPlainTextName(),
++                address,
++                player.getId(),
++                level.dimension().identifier(), // Paper - add world identifier
++                player.getX(),
++                player.getY(),
++                player.getZ()
++            );
++        } else {
++            LOGGER.info(
++                "{} logged in with entity id {} at ([{}]{}, {}, {})", // Paper - add world identifier, Purpur - hide IP
++                player.getPlainTextName(),
++                player.getId(),
++                level.dimension().identifier(), // Paper - add world identifier
++                player.getX(),
++                player.getY(),
++                player.getZ()
++            );
++        }
++        // Purpur end - hide IP when configured
+         // CraftBukkit end - moved down
+         // Paper start - Send empty chunk, so players aren't stuck in the world loading screen with our chunk system not sending chunks when dead
+         if (player.isDeadOrDying()) {
